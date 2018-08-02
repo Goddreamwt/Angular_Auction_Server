@@ -107,7 +107,7 @@ console.log("服务器已启动，地址是：http://localhost:8000");
 
 > node build/auction_server.js
 
-![image](https://github.com/Goddreamwt/Angular_Auction_Server/blob/master/image/QQ20180802-1503339.png)
+![image](https://github.com/Goddreamwt/Angular_Auction_Server/blob/master/image/QQ20180802-150339.png)
 
 ![image](https://github.com/Goddreamwt/Angular_Auction_Server/blob/master/image/QQ20180802-150345.png)
 
