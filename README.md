@@ -34,7 +34,7 @@ webStrom打开server文件
 ```
 
 配置WebStrom
-![这里写图片描述](https://img-blog.csdn.net/20180801110041957?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d0ZGFzaw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![image](https://github.com/Goddreamwt/Angular_Auction_Server/blob/master/image/QQ20180802-150317.png)
 
 新建一个server文件夹，在其下面创建一个typeScript类hello_server.ts
 
@@ -66,7 +66,7 @@ server.listen(8000);
 
 > node build/hello_server.js
 
-![这里写图片描述](https://img-blog.csdn.net/20180801113025317?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d0ZGFzaw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![image](https://github.com/Goddreamwt/Angular_Auction_Server/blob/master/image/QQ20180802-150327.png)
 
 安装express
 
@@ -107,9 +107,9 @@ console.log("服务器已启动，地址是：http://localhost:8000");
 
 > node build/auction_server.js
 
-![这里写图片描述](https://img-blog.csdn.net/20180801144558376?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d0ZGFzaw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![image](https://github.com/Goddreamwt/Angular_Auction_Server/blob/master/image/QQ20180802-1503339.png)
 
-![这里写图片描述](https://img-blog.csdn.net/20180801144644918?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d0ZGFzaw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![image](https://github.com/Goddreamwt/Angular_Auction_Server/blob/master/image/QQ20180802-150345.png)
 
 为了方便调试，安装nodemon，它会监听源代码，当代码变动时，自动重启node服务
 
@@ -195,5 +195,5 @@ console.log("服务器已启动，地址是：http://localhost:8000");
 });
 
 ```
-![这里写图片描述](https://img-blog.csdn.net/20180801152152976?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d0ZGFzaw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![image](https://github.com/Goddreamwt/Angular_Auction_Server/blob/master/image/QQ20180802-150354.png)
 
