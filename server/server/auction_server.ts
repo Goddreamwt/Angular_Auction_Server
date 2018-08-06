@@ -11,18 +11,19 @@ app.get('/', (req, res) => {
 app.get('/api/products', (req, res) => {
     let result = products
     let params = req.query;
+    console.log(params);
     if (params.title) {
-        result =result.filter((p) => p.title.indexOf(params.title) !== -1);
+        result = result.filter((p) => p.title.indexOf(params.title) !== -1);
     }
 
-    if (params.price  && params.price !=='null'&&  result.length > 0) {
-        result =result.filter((p) => p.price <= parseInt(params.price));
+    if (params.price && params.price !== 'null' && result.length > 0) {
+        result = result.filter((p) => p.price <= parseInt(params.price));
     }
 
     if (params.category && params.category !== "-1" && result.length > 0) {
-        result =result.filter((p) => p.categories.indexOf(params.category) !== -1);
+        result = result.filter((p) => p.categories.indexOf(params.category) !== -1);
     }
-    res.json(products);
+    res.json(result);
 });
 
 app.get('/api/product/:id', (req, res) => {
@@ -37,22 +38,41 @@ const server = app.listen(8000, "localhost", () => {
     console.log("服务器已启动，地址是：http://localhost:8000");
 });
 
+//关注的商品id集合
+const subscriptions = new Map<any,number[]>();
+
 const wsServer = new Server({port: 8085});
 wsServer.on("connection", websocket => {
-    websocket.send("这个消息是服务器主动推送的");
+    // websocket.send("这个消息是服务器主动推送的");
     websocket.on("message", message => {
-        console.log("接收到消息：" + message);
+        let messageObj = JSON.parse(message);
+        let productIds = subscriptions.get(websocket) || [];
+        subscriptions.set(websocket, [...productIds, messageObj.productId]);
     });
-})
+});
 
-
-//定时给所有客户端推送消息
+//价格集合
+const currentBids = new Map<number,number>();
+//每两秒更新价格
 setInterval(() => {
-    if (wsServer.clients) {
-        wsServer.clients.forEach(client => {
-            client.send("这是定时推送");
-        })
-    }
+    products.forEach(p => {
+        let currentBid = currentBids.get(p.id) || p.price;
+        let newBid = currentBid + Math.random() * 5;
+        currentBids.set(p.id, newBid);
+    });
+
+    subscriptions.forEach((productIds: number[], ws) => {
+        if (ws.readyState === 1) {
+            let newBids = productIds.map(pid =>({
+                productId: pid,
+                bid: currentBids.get(pid)
+            }));
+            ws.send(JSON.stringify(newBids));
+        }else {
+            subscriptions.delete(ws);
+        }
+
+    });
 }, 2000);
 
 
