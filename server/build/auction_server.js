@@ -2,9 +2,10 @@
 var express = require("express");
 var ws_1 = require('ws');
 var app = express();
-app.get('/', function (req, res) {
-    res.send("Hello Express");
-});
+var path = require("path");
+
+app.use('/',express.static(path.join(__dirname,'..','client')));
+
 app.get('/api/products', function (req, res) {
     var result = products;
     var params = req.query;
